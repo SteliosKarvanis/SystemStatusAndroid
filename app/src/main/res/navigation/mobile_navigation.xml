@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.systemstatusapp.ui.home.HomeFragment"
+        android:name="com.example.systemstatusapp.ui.fragments.HomeFragment"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_details"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_details"
-        android:name="com.example.systemstatusapp.ui.details.DetailsFragment"
+        android:name="com.example.systemstatusapp.ui.fragments.DetailsFragment"
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_nav_details_to_nav_home"
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/nav_edithome"
-        android:name="com.example.systemstatusapp.ui.editHome.EditHomeFragment"
+        android:name="com.example.systemstatusapp.ui.fragments.EditHomeFragment"
         tools:layout="@layout/fragment_edithome" >
         <action
             android:id="@+id/action_nav_edithome_to_nav_home"

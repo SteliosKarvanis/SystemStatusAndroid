@@ -1,4 +1,4 @@
-package com.example.systemstatusapp.ui.details;
+package com.example.systemstatusapp.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

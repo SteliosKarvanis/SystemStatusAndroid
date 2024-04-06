@@ -1,12 +1,17 @@
-package com.example.systemstatusapp.parser;
+package com.example.systemstatusapp.itemsHandler.parser;
 
 import android.util.Log;
+
+import com.example.systemstatusapp.types.Item;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class CpuParser {
-    public float readCpuUsage() {
+public class CpuParser implements Parser {
+    public CpuParser() {
+    }
+
+    public Item updateItem(Item item) {
         try {
             RandomAccessFile reader = new RandomAccessFile("/proc/stat", "r");
             String load = reader.readLine();
@@ -35,12 +40,13 @@ public class CpuParser {
             // TODO: check if 100* is correct
             usage = 100*usage;
             Log.d("CPU", "CPU: " + Float.toString(usage));
-            return usage;
+            item.setMainStatValue(Math.round(usage));
+            return item;
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        return 0;
+        item.setMainStatValue(0);
+        return item;
     }
 }

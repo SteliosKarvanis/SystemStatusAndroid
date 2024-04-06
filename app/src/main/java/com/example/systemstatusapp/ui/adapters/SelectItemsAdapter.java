@@ -1,11 +1,9 @@
-package com.example.systemstatusapp.adapters;
+package com.example.systemstatusapp.ui.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +29,7 @@ public class SelectItemsAdapter extends RecyclerView.Adapter<SelectItemsAdapter.
     @Override
     public void onBindViewHolder(@NonNull SelectItemsViewHolder holder, int position) {
         Item item = items.get(position);
-        holder.checkBox.setChecked(item.getVisibility());
+        holder.checkBox.setChecked(item.isVisible());
         holder.checkBox.setText(item.getTitle());
     }
 

@@ -1,4 +1,4 @@
-package com.example.systemstatusapp.adapters;
+package com.example.systemstatusapp.ui.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +32,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         Item item = items.get(position);
         holder.descriptionView.setText(item.getDescription());
         holder.titleView.setText(item.getTitle());
-        holder.progressBar.setProgress(item.getUsed_percentage(), true);
+        holder.progressBar.setProgress(item.getMainStatValue(), true);
     }
 
     @Override
