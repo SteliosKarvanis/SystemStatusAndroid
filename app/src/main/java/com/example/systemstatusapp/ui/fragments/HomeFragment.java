@@ -46,10 +46,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    public void updateList(ArrayList<Item> newDataList) {
-        items.clear();
-        items.addAll(newDataList);
-        itemsAdapter.notifyDataSetChanged();
-    }
-
 }
