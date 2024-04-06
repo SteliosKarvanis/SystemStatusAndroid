@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsHandler {
+    // TODO: remove Singleton hack to pass data between fragments
     private static ItemsHandler instance;
     private ItemsHandler() {
         extractors = new ArrayList<>();
