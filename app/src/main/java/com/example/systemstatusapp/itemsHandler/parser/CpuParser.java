@@ -39,7 +39,6 @@ public class CpuParser implements Parser {
             float usage = (float)(cpu2 - cpu1) / ((cpu2 + idle2) - (cpu1 + idle1));
             // TODO: check if 100* is correct
             usage = 100*usage;
-            Log.d("CPU", "CPU: " + Float.toString(usage));
             item.setMainStatValue(Math.round(usage));
             return item;
 

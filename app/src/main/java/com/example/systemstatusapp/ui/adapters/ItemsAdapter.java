@@ -1,5 +1,6 @@
 package com.example.systemstatusapp.ui.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +28,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         return new ItemsViewHolder(itemsView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ItemsViewHolder holder, int position) {
         Item item = items.get(position);
         holder.descriptionView.setText(item.getDescription());
         holder.titleView.setText(item.getTitle());
+        holder.progressBarText.setText(Integer.toString(item.getMainStatValue()) + "%");
         holder.progressBar.setProgress(item.getMainStatValue(), true);
     }
 
@@ -44,12 +47,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         TextView titleView;
         TextView descriptionView;
         ProgressBar progressBar;
+        TextView progressBarText;
 
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
             titleView = itemView.findViewById(R.id.titleView);
             descriptionView = itemView.findViewById(R.id.descriptionView);
             progressBar = itemView.findViewById(R.id.progressBar);
+            progressBarText = itemView.findViewById(R.id.progressBarText);
         }
     }
 }
