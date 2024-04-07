@@ -11,6 +11,7 @@ import java.util.List;
 public class ItemsHandler {
     // TODO: remove Singleton hack to pass data between fragments
     private static ItemsHandler instance;
+    private static List<ItemExtractor> extractors;
     private ItemsHandler() {
         extractors = new ArrayList<>();
         extractors.add(new ItemExtractor(new CpuParser(), new Item("CPU", "CPU Stats", true)));
@@ -22,7 +23,6 @@ public class ItemsHandler {
         }
         return instance;
     }
-    private static List<ItemExtractor> extractors;
     public void updateItems(){
         Log.d("Update", "Updating");
         for (ItemExtractor extractor : extractors){

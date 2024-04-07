@@ -4,6 +4,14 @@ public class Stat {
     private String name;
     private int value;
 
+    public Stat(String name, int value) {
+        this.name = name;
+        this.value = value;
+    }
+    public Stat() {
+        this.name = "";
+        this.value = 0;
+    }
     public String getName() {
         return name;
     }

@@ -17,10 +17,16 @@ import com.example.systemstatusapp.R;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder> {
     private List<Item> items;
+    private OnItemClickListener listener;
     public ItemsAdapter(List<Item> items) {
         this.items = items;
     }
-
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+    public interface OnItemClickListener {
+        void onItemClick(Item item);
+    }
     @NonNull
     @Override
     public ItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,8 +42,16 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         holder.titleView.setText(item.getTitle());
         holder.progressBarText.setText(Integer.toString(item.getMainStatValue()) + "%");
         holder.progressBar.setProgress(item.getMainStatValue(), true);
-    }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(item);
+                }
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return this.items.size();

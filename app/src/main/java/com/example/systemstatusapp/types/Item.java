@@ -1,8 +1,10 @@
 package com.example.systemstatusapp.types;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Item {
+public class Item implements Serializable {
     private String title;
     private String description;
     public boolean visible;
@@ -13,6 +15,8 @@ public class Item {
         this.title = title;
         this.description = description;
         this.visible = visible;
+        this.mainStatValue = 0;
+        this.stats = new ArrayList<>();
     }
     public String getTitle() {
         return title;

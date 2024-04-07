@@ -3,15 +3,25 @@ package com.example.systemstatusapp.itemsHandler.parser;
 import android.util.Log;
 
 import com.example.systemstatusapp.types.Item;
+import com.example.systemstatusapp.types.Stat;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CpuParser implements Parser {
     public CpuParser() {
     }
 
     public Item updateItem(Item item) {
+        Stat stat = new Stat();
+        List<Stat> stats = new ArrayList<>();
+        stat.setName("Test Stat");
+        stat.setValue(49);
+        stats.add(stat);
+        stats.add(stat);
+        item.setStats(stats);
         try {
             RandomAccessFile reader = new RandomAccessFile("/proc/stat", "r");
             String load = reader.readLine();
