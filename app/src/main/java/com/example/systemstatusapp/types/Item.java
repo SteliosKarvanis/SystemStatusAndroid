@@ -7,7 +7,7 @@ import java.util.List;
 public class Item implements Serializable {
     private String title;
     private String description;
-    public boolean visible;
+    private boolean visible;
     private int mainStatValue;
     private List<Stat> stats;
 
@@ -26,6 +26,9 @@ public class Item implements Serializable {
     }
     public boolean isVisible() {
         return visible;
+    }
+    public void setVisibility(boolean visible) {
+        this.visible = visible;
     }
     public int getMainStatValue() {
         return mainStatValue;

@@ -28,16 +28,16 @@ public class EditHomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        // Set up recyclerView layout
         binding = FragmentEdithomeBinding.inflate(inflater, container, false);
-        statsParser = ItemsHandler.getInstance();
-
         layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
-
+        // Parse Data
+        statsParser = ItemsHandler.getInstance();
         items = statsParser.getItems();
+        // Set up Adapter
         itemsAdapter = new SelectItemsAdapter(items);
         binding.recyclerView.setAdapter(itemsAdapter);
-
         return binding.getRoot();
     }
 

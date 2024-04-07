@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,17 +31,17 @@ public class HomeFragment extends Fragment implements ItemsAdapter.OnItemClickLi
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        // Set up recyclerView layout
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        statsParser = ItemsHandler.getInstance();
-
         layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
-
+        // Parse Data
+        statsParser = ItemsHandler.getInstance();
         items = statsParser.getItems();
+        // Set up Adapter
         itemsAdapter = new ItemsAdapter(items);
         itemsAdapter.setOnItemClickListener(this);
         binding.recyclerView.setAdapter(itemsAdapter);
-
         return binding.getRoot();
     }
     @Override

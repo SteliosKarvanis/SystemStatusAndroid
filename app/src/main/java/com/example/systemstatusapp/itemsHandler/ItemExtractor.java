@@ -4,7 +4,7 @@ import com.example.systemstatusapp.itemsHandler.parser.Parser;
 import com.example.systemstatusapp.types.Item;
 
 public class ItemExtractor {
-    public Item item;
+    private Item item;
     private Parser parser;
 
     public ItemExtractor(Parser parser, Item item) {

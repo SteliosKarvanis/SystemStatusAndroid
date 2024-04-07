@@ -15,13 +15,6 @@ public class CpuParser implements Parser {
     }
 
     public Item updateItem(Item item) {
-        Stat stat = new Stat();
-        List<Stat> stats = new ArrayList<>();
-        stat.setName("Test Stat");
-        stat.setValue(49);
-        stats.add(stat);
-        stats.add(stat);
-        item.setStats(stats);
         try {
             RandomAccessFile reader = new RandomAccessFile("/proc/stat", "r");
             String load = reader.readLine();

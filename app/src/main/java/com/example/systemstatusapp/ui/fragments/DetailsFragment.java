@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.systemstatusapp.R;
 import com.example.systemstatusapp.databinding.FragmentDetailsBinding;
 import com.example.systemstatusapp.types.Item;
 import com.example.systemstatusapp.ui.adapters.DetailsAdapter;
@@ -23,12 +25,16 @@ public class DetailsFragment extends Fragment {
     Item item;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        // Set up recyclerView layout
         binding = FragmentDetailsBinding.inflate(inflater, container, false);
-        item = (Item) getArguments().getSerializable("item");
         layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
+        // Parse Item
+        item = (Item) getArguments().getSerializable("item");
+        // Set up Adapter
         statsAdapter = new DetailsAdapter(item.getStats());
         binding.recyclerView.setAdapter(statsAdapter);
+        // TODO: add button action to return
         return binding.getRoot();
     }
 
