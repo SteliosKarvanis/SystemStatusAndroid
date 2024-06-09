@@ -38,10 +38,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
     @Override
     public void onBindViewHolder(@NonNull ItemsViewHolder holder, int position) {
         Item item = items.get(position);
-        holder.descriptionView.setText(item.getDescription());
+        holder.ProgressBarDescription.setText(item.getProgressBarDescription());
+        holder.NumberDescription.setText(item.getNumberDescription());
         holder.titleView.setText(item.getTitle());
         holder.progressBarText.setText(Integer.toString(item.getMainStatValue()) + "%");
         holder.progressBar.setProgress(item.getMainStatValue(), true);
+        holder.numberStatText.setText(Integer.toString(item.getNumberStatValue()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,18 +59,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         return this.items.size();
     }
 
-    public class ItemsViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemsViewHolder extends RecyclerView.ViewHolder {
         TextView titleView;
-        TextView descriptionView;
+        TextView ProgressBarDescription;
+        TextView NumberDescription;
+        TextView numberStatText;
         ProgressBar progressBar;
         TextView progressBarText;
 
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
             titleView = itemView.findViewById(R.id.titleView);
-            descriptionView = itemView.findViewById(R.id.descriptionView);
+            ProgressBarDescription = itemView.findViewById(R.id.ProgressBarDescriptionView);
+            NumberDescription = itemView.findViewById(R.id.NumberDescriptionView);
             progressBar = itemView.findViewById(R.id.progressBar);
             progressBarText = itemView.findViewById(R.id.progressBarText);
+            numberStatText = itemView.findViewById(R.id.numberStatText);
         }
     }
 }

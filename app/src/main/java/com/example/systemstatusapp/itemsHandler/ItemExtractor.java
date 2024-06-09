@@ -3,6 +3,8 @@ package com.example.systemstatusapp.itemsHandler;
 import com.example.systemstatusapp.itemsHandler.parser.Parser;
 import com.example.systemstatusapp.types.Item;
 
+import java.io.IOException;
+
 public class ItemExtractor {
     private Item item;
     private Parser parser;
@@ -12,7 +14,7 @@ public class ItemExtractor {
         this.parser = parser;
     }
 
-    public void updateItem() {
+    public void updateItem() throws IOException {
         item = parser.updateItem(item);
     }
     public Item getItem() {

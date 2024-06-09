@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_settings) {
-            if (navController.getCurrentDestination().getId() == R.id.nav_home) {
+            if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.nav_home) {
                 navController.navigate(R.id.action_nav_home_to_nav_edithome);
             }
             else if(navController.getCurrentDestination().getId() == R.id.nav_details){

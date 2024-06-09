@@ -5,25 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Item implements Serializable {
-    private String title;
-    private String description;
+    private final String title;
+    private final String ProgressBarDescription;
+    private final String NumberDescription;
     private boolean visible;
     private int mainStatValue;
+    private int numberStatValue;
     private List<Stat> stats;
 
-    public Item(String title, String description, boolean visible) {
+    public Item(String title, String ProgressBarDescription, String NumberDescription, boolean visible) {
         this.title = title;
-        this.description = description;
+        this.ProgressBarDescription = ProgressBarDescription;
+        this.NumberDescription = NumberDescription;
         this.visible = visible;
         this.mainStatValue = 0;
+        this.numberStatValue = 0;
         this.stats = new ArrayList<>();
     }
     public String getTitle() {
         return title;
     }
-    public String getDescription() {
-        return description;
+    public String getProgressBarDescription() {
+        return ProgressBarDescription;
     }
+    public String getNumberDescription() { return NumberDescription; }
     public boolean isVisible() {
         return visible;
     }
@@ -33,8 +38,14 @@ public class Item implements Serializable {
     public int getMainStatValue() {
         return mainStatValue;
     }
+    public int getNumberStatValue(){
+        return numberStatValue;
+    }
     public void setMainStatValue(int mainStatValue) {
         this.mainStatValue = mainStatValue;
+    }
+    public void setNumberStatValue(int numberStatValue) {
+        this.numberStatValue = numberStatValue;
     }
     public List<Stat> getStats() {
         return stats;

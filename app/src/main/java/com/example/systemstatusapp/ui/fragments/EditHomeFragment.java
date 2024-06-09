@@ -33,7 +33,7 @@ public class EditHomeFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
         // Parse Data
-        statsParser = ItemsHandler.getInstance();
+        statsParser = ItemsHandler.getInstance(getContext());
         items = statsParser.getItems();
         // Set up Adapter
         itemsAdapter = new SelectItemsAdapter(items);

@@ -30,8 +30,10 @@ public class DetailsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
         // Parse Item
+        assert getArguments() != null;
         item = (Item) getArguments().getSerializable("item");
         // Set up Adapter
+        assert item != null;
         statsAdapter = new DetailsAdapter(item.getStats());
         binding.recyclerView.setAdapter(statsAdapter);
         // TODO: add button action to return
