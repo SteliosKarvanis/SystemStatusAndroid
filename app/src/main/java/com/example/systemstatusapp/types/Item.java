@@ -7,7 +7,7 @@ import java.util.List;
 public class Item implements Serializable {
     private final String title;
     private final String ProgressBarDescription;
-    private final String NumberDescription;
+    private String NumberDescription;
     private boolean visible;
     private int mainStatValue;
     private int numberStatValue;
@@ -47,6 +47,7 @@ public class Item implements Serializable {
     public void setNumberStatValue(int numberStatValue) {
         this.numberStatValue = numberStatValue;
     }
+    public void setNumberDescription(String description) {this.NumberDescription = description;}
     public List<Stat> getStats() {
         return stats;
     }

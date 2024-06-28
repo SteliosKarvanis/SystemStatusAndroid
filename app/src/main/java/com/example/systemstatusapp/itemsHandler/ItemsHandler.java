@@ -5,9 +5,12 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.systemstatusapp.itemsHandler.parser.BateryParser;
 import com.example.systemstatusapp.itemsHandler.parser.CpuParser;
+import com.example.systemstatusapp.itemsHandler.parser.DownloadParser;
 import com.example.systemstatusapp.itemsHandler.parser.MemoryParser;
 import com.example.systemstatusapp.itemsHandler.parser.StorageParser;
+import com.example.systemstatusapp.itemsHandler.parser.UploadParser;
 import com.example.systemstatusapp.types.Item;
 
 import java.io.IOException;
@@ -27,8 +30,10 @@ public class ItemsHandler {
         List<ItemExtractor> extractors = new ArrayList<>();
         extractors.add(new ItemExtractor(new CpuParser(), new Item("CPU", "Uso de CPU", "Número de Núcleos", true)));
         extractors.add(new ItemExtractor(new MemoryParser(context), new Item("Memória RAM", "Utilizada %", "Memória Usada (MB)", true)));
-        extractors.add(new ItemExtractor(new StorageParser(context), new Item("Memória", "Lotação", "Memória Livre (MB)", true)));
-
+        extractors.add(new ItemExtractor(new StorageParser(context), new Item("Armazenamento", "Lotação", "Memória Livre (MB)", true)));
+        extractors.add(new ItemExtractor(new BateryParser(context), new Item("Bateria", "Porcentagem", "Tempo de Carga (min)", true)));
+        extractors.add(new ItemExtractor(new DownloadParser(context), new Item("Internet", "Conectividade", "Velocidade (Kbps)", true)));
+//        extractors.add(new ItemExtractor(new UploadParser(context), new Item("Velocidade de Upload", "Porcentagem", "Velocidade", true)));
         ingestExtractors(extractors);
     }
 
