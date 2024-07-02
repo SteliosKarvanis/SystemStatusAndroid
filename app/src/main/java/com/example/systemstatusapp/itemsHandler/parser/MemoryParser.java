@@ -32,6 +32,7 @@ public class MemoryParser implements Parser {
         // Update item with memory information
         item.setMainStatValue(usedMemoryPercentage); // Percentage of used RAM
         item.setNumberStatValue((int) (totalMemory - availableMemory)); // Used memory in GB
+        item.addPoint();
 
         return item;
     }

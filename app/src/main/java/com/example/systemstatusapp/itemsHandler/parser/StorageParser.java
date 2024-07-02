@@ -39,7 +39,7 @@ public class StorageParser implements Parser {
         // Update item with storage information
         item.setMainStatValue(usedPercentage); // Percentage of used storage
         item.setNumberStatValue((int) availableGB); // Used storage in GB
-
+        item.addPoint();
         return item;
     }
 }

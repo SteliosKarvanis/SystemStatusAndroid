@@ -41,9 +41,8 @@ public class DownloadParser implements Parser {
         } else {
             item.setMainStatValue(100);
         }
-
         item.setNumberStatValue(downSpeed);
-
+        item.addPoint();
         return item;
     }
 }

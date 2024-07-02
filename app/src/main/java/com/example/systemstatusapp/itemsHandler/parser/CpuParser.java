@@ -27,6 +27,7 @@ public class CpuParser implements Parser {
         int cont = calcCpuCoreCount();
         item.setMainStatValue((int) (mediamCPU / cont));
         item.setNumberStatValue(cont);
+        item.addPoint();
         return item;
     }
 

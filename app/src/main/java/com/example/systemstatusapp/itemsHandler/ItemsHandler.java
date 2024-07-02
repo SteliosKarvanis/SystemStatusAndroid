@@ -22,18 +22,15 @@ import java.util.Map;
 public class ItemsHandler {
     // TODO: remove Singleton hack to pass data between fragments
     private static ItemsHandler instance;
-    private static Map<String, ItemExtractor> extractors_map = new HashMap<>();
-    private Context context;
+    private static final Map<String, ItemExtractor> extractors_map = new HashMap<>();
 
     private ItemsHandler(Context context) {
-        this.context = context;
         List<ItemExtractor> extractors = new ArrayList<>();
         extractors.add(new ItemExtractor(new CpuParser(), new Item("CPU", "Uso de CPU", "Número de Núcleos", true)));
         extractors.add(new ItemExtractor(new MemoryParser(context), new Item("Memória RAM", "Utilizada %", "Memória Usada (MB)", true)));
         extractors.add(new ItemExtractor(new StorageParser(context), new Item("Armazenamento", "Lotação", "Memória Livre (MB)", true)));
         extractors.add(new ItemExtractor(new BateryParser(context), new Item("Bateria", "Porcentagem", "Tempo de Carga (min)", true)));
         extractors.add(new ItemExtractor(new DownloadParser(context), new Item("Internet", "Conectividade", "Velocidade (Kbps)", true)));
-//        extractors.add(new ItemExtractor(new UploadParser(context), new Item("Velocidade de Upload", "Porcentagem", "Velocidade", true)));
         ingestExtractors(extractors);
     }
 

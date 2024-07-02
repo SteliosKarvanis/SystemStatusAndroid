@@ -47,7 +47,7 @@ public class BateryParser implements Parser {
 
         item.setMainStatValue((int) batteryPct);
         item.setNumberStatValue((int) rTime/60);
-
+        item.addPoint();
         return item;
     }
 }

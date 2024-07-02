@@ -25,8 +25,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class HomeFragment extends Fragment implements ItemsAdapter.OnItemClickListener {
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ItemsAdapter.OnItemClickListener {
+//public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     protected ItemsAdapter itemsAdapter;
@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
 
         // Set up Adapter
         itemsAdapter = new ItemsAdapter(items);
-//        itemsAdapter.setOnItemClickListener(this);
+        itemsAdapter.setOnItemClickListener(this);
         binding.recyclerView.setAdapter(itemsAdapter);
 
         // Set up periodic update
@@ -78,18 +78,18 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
-//    @Override
-//    public void onItemClick(Item item) {
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("item", item);
-//        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
-//        navController.navigate(R.id.nav_details, bundle);
-//    }
+    @Override
+    public void onItemClick(Item item) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("item", item);
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
+        navController.navigate(R.id.nav_details, bundle);
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        handler.removeCallbacks(updateRunnable); // Remove o runnable para evitar vazamento de memória
+        handler.removeCallbacks(updateRunnable);
         binding = null;
     }
 }

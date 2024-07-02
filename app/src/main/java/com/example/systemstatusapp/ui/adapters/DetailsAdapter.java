@@ -40,7 +40,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.ItemsVie
         return this.stats.size();
     }
 
-    public class ItemsViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemsViewHolder extends RecyclerView.ViewHolder {
         TextView titleView;
         ProgressBar progressBar;
         TextView progressBarText;

@@ -1,5 +1,11 @@
 package com.example.systemstatusapp.types;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +18,9 @@ public class Item implements Serializable {
     private int mainStatValue;
     private int numberStatValue;
     private List<Stat> stats;
+    private BarData barData;
+    private List<BarEntry> barEntries;
+    private static final int maxLen = 20;
 
     public Item(String title, String ProgressBarDescription, String NumberDescription, boolean visible) {
         this.title = title;
@@ -21,6 +30,7 @@ public class Item implements Serializable {
         this.mainStatValue = 0;
         this.numberStatValue = 0;
         this.stats = new ArrayList<>();
+        this.barEntries = new ArrayList<>();
     }
     public String getTitle() {
         return title;
@@ -53,5 +63,31 @@ public class Item implements Serializable {
     }
     public void setStats(List<Stat> stats) {
         this.stats = stats;
+    }
+
+    public void addPoint() {
+        // Adiciona o novo ponto ao final da lista
+        barEntries.add(new BarEntry(barEntries.size(), mainStatValue));
+
+        // Se o tamanho da lista exceder maxLen, remove o primeiro ponto
+        if (barEntries.size() > maxLen) {
+            barEntries.remove(0);
+        }
+
+        // Atualiza os índices dos pontos
+        for (int i = 0; i < barEntries.size(); i++) {
+            barEntries.get(i).setX(i);
+        }
+
+        // Cria um novo BarDataSet com os dados atualizados
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Infos");
+//        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+
+        // Atualiza o BarData
+        this.barData = new BarData(barDataSet);
+    }
+
+    public BarData getBarData(){
+        return this.barData;
     }
 }

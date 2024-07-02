@@ -12,8 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.systemstatusapp.types.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.example.systemstatusapp.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder> {
     private List<Item> items;
@@ -44,6 +50,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         holder.progressBarText.setText(Integer.toString(item.getMainStatValue()) + "%");
         holder.progressBar.setProgress(item.getMainStatValue(), true);
         holder.numberStatText.setText(Integer.toString(item.getNumberStatValue()));
+        holder.barChart.setData(item.getBarData());
+        holder.barChart.getDescription().setText("");
+        holder.barChart.setFitBars(true);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +75,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         TextView numberStatText;
         ProgressBar progressBar;
         TextView progressBarText;
+        BarChart barChart;
 
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +85,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
             progressBar = itemView.findViewById(R.id.progressBar);
             progressBarText = itemView.findViewById(R.id.progressBarText);
             numberStatText = itemView.findViewById(R.id.numberStatText);
+            barChart = itemView.findViewById(R.id.barChart);
         }
     }
 }
