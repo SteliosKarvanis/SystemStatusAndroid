@@ -28,21 +28,13 @@ public class DownloadParser implements Parser {
         if (nc != null) {
             downSpeed = nc.getLinkDownstreamBandwidthKbps();
         }
-        if(downSpeed == 0){
-            item.setMainStatValue(0);
-        } else if(downSpeed < 2000){
-            item.setMainStatValue(20);
-        } else if(downSpeed < 4000){
-            item.setMainStatValue(40);
-        } else if(downSpeed < 6000){
-            item.setMainStatValue(60);
-        } else if(downSpeed < 8000){
-            item.setMainStatValue(80);
+        if(downSpeed < 10000){
+            item.setMainStatValue(downSpeed/100);
         } else {
             item.setMainStatValue(100);
         }
         item.setNumberStatValue(downSpeed);
-        item.addPoint();
+        item.addPoint2();
         return item;
     }
 }

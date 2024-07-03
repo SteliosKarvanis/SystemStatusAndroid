@@ -66,24 +66,26 @@ public class Item implements Serializable {
     }
 
     public void addPoint() {
-        // Adiciona o novo ponto ao final da lista
         barEntries.add(new BarEntry(barEntries.size(), mainStatValue));
-
-        // Se o tamanho da lista exceder maxLen, remove o primeiro ponto
         if (barEntries.size() > maxLen) {
             barEntries.remove(0);
         }
-
-        // Atualiza os índices dos pontos
         for (int i = 0; i < barEntries.size(); i++) {
             barEntries.get(i).setX(i);
         }
-
-        // Cria um novo BarDataSet com os dados atualizados
         BarDataSet barDataSet = new BarDataSet(barEntries, "Infos");
-//        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        this.barData = new BarData(barDataSet);
+    }
 
-        // Atualiza o BarData
+    public void addPoint2() {
+        barEntries.add(new BarEntry(barEntries.size(), numberStatValue));
+        if (barEntries.size() > maxLen) {
+            barEntries.remove(0);
+        }
+        for (int i = 0; i < barEntries.size(); i++) {
+            barEntries.get(i).setX(i);
+        }
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Infos");
         this.barData = new BarData(barDataSet);
     }
 
