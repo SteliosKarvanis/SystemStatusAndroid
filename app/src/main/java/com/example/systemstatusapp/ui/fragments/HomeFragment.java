@@ -10,12 +10,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.systemstatusapp.R;
 import com.example.systemstatusapp.ui.adapters.ItemsAdapter;
 import com.example.systemstatusapp.databinding.FragmentHomeBinding;
 import com.example.systemstatusapp.itemsHandler.ItemsHandler;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements ItemsAdapter.OnItemClickListener {
-//public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     protected ItemsAdapter itemsAdapter;
@@ -80,10 +76,6 @@ public class HomeFragment extends Fragment implements ItemsAdapter.OnItemClickLi
 
     @Override
     public void onItemClick(Item item) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("item", item);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
-        navController.navigate(R.id.nav_details, bundle);
     }
 
     @Override
